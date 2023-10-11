@@ -295,4 +295,4 @@ function add(a, b, c) {
 const result1 = add(5, "Saikat", false);
 const result2 = add("Hello", true, true);
 const result3 = add(4, 4);
-//console.log("Hi");
+console.log("Hi");
