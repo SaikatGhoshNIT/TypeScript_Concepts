@@ -87,6 +87,19 @@ console.log(fun5(25,25));
 const fun6 = (a:number,b:number,c:number =20)=>{ return (a*b*c)}
 console.log(fun6(1,1));
 
+//!Destructuring of Object
+type Option ={
+    debugMode?: boolean;
+    indentLevel?: number
+}
+
+function printNameAge(name:string, 
+    {debugMode = false, indentLevel}:Option = {}){
+console.log(name, debugMode, indentLevel);
+}
+
+printNameAge("Saikat")
+
 //!Rest parameter
 type FuncType3 = (...m:number[]) => number;
 
