@@ -251,7 +251,7 @@ form1.onsubmit = (e : SubmitEvent)=>{
 }
 
 
-//!############# index signature
+//!############# index signature (keyof)
 interface Person {
     //name:string;
     //email:string;
@@ -269,7 +269,7 @@ const getEmail = (): string =>{
     return myobj.email
 }
 let key ="name";
-myobj[key as keyof Person];
+myobj[key as keyof typeof myobj];
 const data = (key : "name" | "email"):string=>{
     //return myobj["name"]  
     //return myobj[key]  -it will throw error without dynamic key  
@@ -279,7 +279,7 @@ const data = (key : "name" | "email"):string=>{
 //Data("lol") - it will show error as key can only between name or email only
 
 
-// keyof
+//! keyof
 const data2 = (key : keyof Person):string=>{
     return myobj[key] // now key can be name or email only as keyof Person will allow to take the keys present in Person object only
 }
@@ -355,7 +355,7 @@ const findMax = (coll:number[]):number=>{
 console.log(findMax([1,2,3,4,5]));
 
 
-//Enums(enum is a datatype)
+//!Enums(enum is a datatype)
 
 //!In TypeScript, when enum constants are not explicitly assigned numeric values, they are automatically assigned incremental numeric values starting from 0. The default value for the first enum constant is 0, ans subsequesnt enum constants recive values incremented by 1.
 
@@ -392,7 +392,7 @@ const isAdmin = (user:LoginDetails):void =>{
 isAdmin(user1);
 isAdmin(user2);
 
- //Union and Intersections
+ //!Union and Intersections
 
 //? Union types allow us to specify that a variable can hold values of multiple types. We use the | (pipe) symbol to define a union type.
 //* In TypeScript, when using a union type, it is essential to ensure that at least one of the types in the union includes all the required properties,failure to do so will result in a type error during compilation.
@@ -431,7 +431,7 @@ type Employee = {
     department : string
 }
 
-type EmpDetailsIntersection = Personal & Employee
+type EmpDetailsIntersection = Personal & Employee //! *************
 
 type EmpDetailsUnion = Personal | Employee
 
