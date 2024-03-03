@@ -552,7 +552,7 @@ type Todo = {
 
 //? if we are getting them by an API then we have to cover all type odf scenarios for date which can have two typws
 
-//###Process 1
+//*Process 1
 function extendedToDo(todo:Todo) {
     if (typeof todo.dueDate === "string") {
         console.log(todo.dueDate);
@@ -561,7 +561,7 @@ function extendedToDo(todo:Todo) {
     }
 }
 
-//###Process2 //! instanceof
+//*Process2 //! instanceof
 function extendedToDo2(todo:Todo) {
     //if (typeof todo.dueDate === "Date") {} - we can't do this as Date is an Object
     if (todo.dueDate instanceof Date) {
@@ -585,5 +585,25 @@ function extendedToDo3(todo:Todo) {
         case "Low":
             console.log(todo.priority);
             break
+    }
+}
+
+//! Never Type
+function extendedToDo4(todo:Todo) {
+    switch(todo.priority){
+        case "High":{
+            console.log(todo.priority);
+            break
+        }
+        case "Normal":
+            console.log(todo.priority);
+            break
+        case "Low":
+            console.log(todo.priority);
+            break
+        default:
+            const check: never = todo.priority
+            //console.log(todo.priority); //* here priority have a type of "never"
+            return check //* with this we can check if anymore states it have and we are missing to put that case.
     }
 }
