@@ -570,3 +570,20 @@ function extendedToDo2(todo:Todo) {
         console.log(todo.dueDate);
     }
 }
+
+//TODO: Type Narrowing with "switch-case" statements
+
+function extendedToDo3(todo:Todo) {
+    switch(todo.priority){
+        case "High":{
+            console.log(todo.priority);
+            break
+        }
+        case "Normal":
+            console.log(todo.priority);
+            break
+        case "Low":
+            console.log(todo.priority);
+            break
+    }
+}
