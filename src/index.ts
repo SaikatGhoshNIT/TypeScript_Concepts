@@ -539,3 +539,34 @@ type Async = Promise<string>
 type value = Async // it will give us a type as Promise<string>
 
 type value1 = Awaited<Async> //here value 1 is just sting only.
+
+//! Type Narrowing
+
+type Todo = {
+    title : string
+    priority : "High" | "Normal" | "Low"
+    isComplete: boolean
+    description?: string
+    dueDate: Date | string
+}
+
+//? if we are getting them by an API then we have to cover all type odf scenarios for date which can have two typws
+
+//###Process 1
+function extendedToDo(todo:Todo) {
+    if (typeof todo.dueDate === "string") {
+        console.log(todo.dueDate);
+    } else {
+        console.log(todo.dueDate.getDate);
+    }
+}
+
+//###Process2 //! instanceof
+function extendedToDo2(todo:Todo) {
+    //if (typeof todo.dueDate === "Date") {} - we can't do this as Date is an Object
+    if (todo.dueDate instanceof Date) {
+        console.log(todo.dueDate.getDate);
+    } else {
+        console.log(todo.dueDate);
+    }
+}
