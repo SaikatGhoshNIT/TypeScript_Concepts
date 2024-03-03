@@ -638,6 +638,47 @@ const todo = {
 
 todo.dueDate.setDate(4)
 
-/*Allows you to ensure that a value meets the requirements of an interface or type predicate, similar to how type guards work.
-Preserves the original type of the expression after the check, unlike type assertions (as) which can restrict type information. This facilitates type inference for downstream code.*/
+/* 
+TODO:Allows you to ensure that a value meets the requirements of an interface or type predicate, similar to how type guards work.Preserves the original type of the expression after the check, unlike type assertions (as) which can restrict type information. This facilitates type inference for downstream code.
+*/
+
+//! Discriminated Union
+//TODO:We want the data once the status is 'Sucess' and we want the errorMessage once the status is "Error"
+/*
+type UserApiResponse = {
+    status: "Error" | "Sucess"
+    data?: {id:string, name:string}
+    errorMessage?: string
+}
+? but in this case we will get error for "handelResponse" function as data and errorMessage are optional and we will get them for different status.
+*/
+
+type successResponse = {
+    status: "Sucess"
+    data: {id:string, name:string}
+}
+
+type errorResponse = {
+    status: "Error" 
+    errorMessage: string
+}
+
+type UserApiResponse = successResponse | errorResponse //? Discriminated Union
+
+function handelResponse(response:UserApiResponse) {
+    /*switch (response.status) {
+        case "Sucess":
+            console.log(response.data.name);
+            break;
+        case "Error":
+            console.log(response.errorMessage.length);
+            break;
+    }*/
+    if(response.status === "Sucess"){
+        console.log(response.data.name);
+    } else {
+        console.log(response.errorMessage.length);
+    }
+}
+
 
