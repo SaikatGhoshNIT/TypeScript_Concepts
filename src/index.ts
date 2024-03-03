@@ -531,6 +531,10 @@ const result2 = add<string, boolean>("Hello",true,true)
 const result3 = add<number, number>(4,4)
 
 console.log("Hi");
+console.log(result1);
+console.log(result3);
+
+
 
 //! Awaited
 
