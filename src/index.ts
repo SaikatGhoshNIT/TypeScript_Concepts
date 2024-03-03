@@ -532,3 +532,10 @@ const result3 = add<number, number>(4,4)
 
 console.log("Hi");
 
+//! Awaited
+
+type Async = Promise<string>
+
+type value = Async // it will give us a type as Promise<string>
+
+type value1 = Awaited<Async> //here value 1 is just sting only.
