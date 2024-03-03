@@ -607,3 +607,37 @@ function extendedToDo4(todo:Todo) {
             return check //* with this we can check if anymore states it have and we are missing to put that case.
     }
 }
+
+
+//!unknown Type 
+//* this is a type like any, but with this we need to check for conditions
+function unknownCheck(data:unknown) {
+    if (data != null && typeof data === 'object' && 'name' in data && typeof data.name === "string") { //? "'name' in data" with this we are checking for 'name' key in data object.
+        console.log(data.name.length);
+    }
+}
+
+
+//! AS_Casting
+fetch("API").then(res => res.json()).then(data => {
+    return data as Todo //? 
+})
+
+//! Satisfies
+type ToDo = {
+    title: string
+    dueDate: string | Date
+    isComplete: boolean
+}
+
+const todo = {
+    title: "titel",
+    dueDate: new Date(),
+    isComplete: true
+} satisfies ToDo
+
+todo.dueDate.setDate(4)
+
+/*Allows you to ensure that a value meets the requirements of an interface or type predicate, similar to how type guards work.
+Preserves the original type of the expression after the check, unlike type assertions (as) which can restrict type information. This facilitates type inference for downstream code.*/
+
